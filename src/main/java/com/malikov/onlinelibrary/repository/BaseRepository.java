@@ -10,7 +10,7 @@ public interface BaseRepository<T extends BaseModel> {
 
     Connection connection = Beans.getConnection();
 
-    void save(T model);
+    boolean save(T model);
     T get(Integer id);
     void delete(Integer id);
     List<T> getAll();

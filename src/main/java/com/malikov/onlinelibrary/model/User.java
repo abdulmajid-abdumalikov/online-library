@@ -1,6 +1,5 @@
 package com.malikov.onlinelibrary.model;
 
-import com.malikov.onlinelibrary.enums.Role;
 import lombok.*;
 
 import java.sql.ResultSet;
@@ -31,11 +30,11 @@ public class User extends BaseModel {
                 .username(resultSet.getString("username"))
                 .password(resultSet.getString("password"))
                 .role(Role.valueOf(resultSet.getString("role")))
-                .phone(resultSet.getString("phone"))
+                .phone(resultSet.getString("phone_number"))
                 .email(resultSet.getString("email"))
                 .bio(resultSet.getString("bio"))
-                .profile(resultSet.getString("profile"))
-                .updatedAt(LocalDateTime.parse(resultSet.getString("updated_at")))
+                .profile(resultSet.getString("profile_picture"))
+                .updatedAt(resultSet.getTimestamp("updated_at").toLocalDateTime())
                 .build();
         user.setID(resultSet.getObject("id", UUID.class));
         user.setCreatedAt(resultSet.getTimestamp("created_at").toLocalDateTime());

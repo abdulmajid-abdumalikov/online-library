@@ -5,14 +5,14 @@ import lombok.Getter;
 
 import java.util.List;
 
-public class AuthorRepository implements BaseRepository<Author>{
+public class AuthorRepository implements BaseRepository<Author> {
 
     @Getter
     private static final AuthorRepository instance = new AuthorRepository();
 
     @Override
-    public void save(Author model) {
-
+    public boolean save(Author model) {
+        return false;
     }
 
     @Override

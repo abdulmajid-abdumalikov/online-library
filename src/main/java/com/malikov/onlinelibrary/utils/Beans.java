@@ -13,9 +13,9 @@ import java.sql.SQLException;
 public class Beans {
 
     public static final UserService userService = UserService.getInstance();
-    public static final BookService studentService = BookService.getInstance();
-    public static final AuthorService groupService = AuthorService.getInstance();
-    public static final GenreService courseService = GenreService.getInstance();
+    public static final BookService bookService = BookService.getInstance();
+    public static final AuthorService authorService = AuthorService.getInstance();
+    public static final GenreService genreService = GenreService.getInstance();
 
     @Getter
     private static final Connection connection;

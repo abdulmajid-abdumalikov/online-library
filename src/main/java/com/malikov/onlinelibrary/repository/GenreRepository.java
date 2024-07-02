@@ -11,8 +11,8 @@ public class GenreRepository implements BaseRepository<Genre>{
     private static final GenreRepository instance = new GenreRepository();
 
     @Override
-    public void save(Genre model) {
-
+    public boolean save(Genre model) {
+return false;
     }
 
     @Override

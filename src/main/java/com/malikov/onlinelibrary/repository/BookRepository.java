@@ -3,16 +3,20 @@ package com.malikov.onlinelibrary.repository;
 import com.malikov.onlinelibrary.model.Book;
 import lombok.Getter;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
-public class BookRepository implements BaseRepository<Book>{
+public class BookRepository implements BaseRepository<Book> {
 
     @Getter
     private static final BookRepository instance = new BookRepository();
 
     @Override
-    public void save(Book model) {
-
+    public boolean save(Book model) {
+        return false;
     }
 
     @Override
@@ -27,7 +31,20 @@ public class BookRepository implements BaseRepository<Book>{
 
     @Override
     public List<Book> getAll() {
-        return List.of();
+        PreparedStatement preparedStatement = null;
+        List<Book> books;
+        try {
+            preparedStatement = connection.prepareStatement("select * from books;");
+            ResultSet resultSet = preparedStatement.executeQuery();
+            books = new ArrayList<>();
+            while (resultSet.next()) {
+                Book course = Book.map(resultSet);
+                books.add(course);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return books;
     }
 
     @Override

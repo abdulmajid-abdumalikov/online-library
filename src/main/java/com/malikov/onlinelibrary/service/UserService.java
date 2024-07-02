@@ -11,4 +11,13 @@ public class UserService extends BaseService<UserRepository, User> {
     private UserService() {
         super(UserRepository.getInstance());
     }
+
+    @Override
+    public boolean save(User user) {
+        return super.save(user);
+    }
+
+    public User login(String username, String password) {
+        return repository.login(username, password);
+    }
 }
